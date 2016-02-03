@@ -135,6 +135,23 @@ When using the eDisMax feature solr offers, add
 
 * ``features.eDisMax = 1``
 
+Specific eDisMax features can be enabled in the ``features.eDisMax`` settings array:
+
+* ``queryFields``: List of fields to search for the query string in and the "boosts" to associate with each of them
+* ``minimumMatch``: Set the minimum number of query clauses that must match
+* ``phraseFields``: Boost the score of documents where all the query terms appear in the given fields in close proximity
+* ``phraseSlop``: Amount of acceptable slop in phrase proximity in matching ``phraseFields``
+* ``queryPhraseSlop``: Amount of acceptable slop in phrase proximity in match ``queryFields``
+* ``tie``: Float value to use as a tiebreaker in query
+* ``boostQuery``: A raw Solr query to include in influencing document scoring
+* ``boostFunctions``: Functions to include in query for additively influencing document scoring
+* ``boostFunctionsMult``: Functions to include in query for multiplicitively influencing document scoring
+* ``phraseBigramFields``: Similar to ``phraseFields`` but the query is chopped into bi-grams instead of individual words
+* ``phraseBigramSlop``: Amount of acceptable slop in phrase proximity in matching ``phraseBigramFields``
+* ``phraseTrigramFields``: Similar to ``phraseFields`` but the query is chopped into tri-grams instead of individual words
+* ``phraseTrigramSlop``: Amount of acceptable slop in phrase proximity in matching ``phraseTrigramFields``
+
+Details on the syntax of eDisMax options can be found in the `Solr documentation <https://wiki.apache.org/solr/ExtendedDisMax>`_.
 
 The search form
 :::::::::::::::

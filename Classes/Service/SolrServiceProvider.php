@@ -187,7 +187,47 @@ class SolrServiceProvider implements ServiceProviderInterface
 
     protected function addEDisMax()
     {
-        $this->query->getEDisMax();
+        $edismax = $this->query->getEDisMax();
+        if ($this->settings['features']['eDisMax']['queryFields']) {
+            $edismax->setQueryFields($this->settings['features']['eDisMax']['queryFields']);
+        }
+        if ($this->settings['features']['eDisMax']['minimumMatch']) {
+            $edismax->setMinimumMatch($this->settings['features']['eDisMax']['minimumMatch']);
+        }
+        if ($this->settings['features']['eDisMax']['phraseFields']) {
+            $edismax->setPhraseFields($this->settings['features']['eDisMax']['phraseFields']);
+        }
+        if ($this->settings['features']['eDisMax']['phraseSlop']) {
+            $edismax->setPhraseSlop($this->settings['features']['eDisMax']['phraseSlop']);
+        }
+        if ($this->settings['features']['eDisMax']['queryPhraseSlop']) {
+            $edismax->setQueryPhraseSlop($this->settings['features']['eDisMax']['queryPhraseSlop']);
+        }
+        if ($this->settings['features']['eDisMax']['tie']) {
+            $edismax->setTie($this->settings['features']['eDisMax']['tie']);
+        }
+        if ($this->settings['features']['eDisMax']['boostQuery']) {
+            $edismax->setBoostQuery($this->settings['features']['eDisMax']['boostQuery']);
+        }
+        if ($this->settings['features']['eDisMax']['boostFunctions']) {
+            $edismax->setBoostFunctions($this->settings['features']['eDisMax']['boostFunctions']);
+        }
+        if ($this->settings['features']['eDisMax']['boostFunctionsMult']) {
+            $edismax->setBoostFunctionsMult($this->settings['features']['eDisMax']['boostFunctions']);
+        }
+        if ($this->settings['features']['eDisMax']['phraseBigramFields']) {
+            $edismax->setPhraseBigramFields($this->settings['features']['eDisMax']['phraseBigramFields']);
+        }
+        if ($this->settings['features']['eDisMax']['phraseBigramSlop']) {
+            $edismax->setPhraseBigramSlop($this->settings['features']['eDisMax']['phraseBigramSlop']);
+        }
+        if ($this->settings['features']['eDisMax']['phraseTrigramFields']) {
+            $edismax->setPhraseTrigramFields($this->settings['features']['eDisMax']['phraseTrigramFields']);
+        }
+        if ($this->settings['features']['eDisMax']['phraseTrigramSlop']) {
+            $edismax->setPhraseTrigramSlop($this->settings['features']['eDisMax']['phraseTrigramSlop']);
+        }
+
     }
 
 
@@ -592,7 +632,7 @@ class SolrServiceProvider implements ServiceProviderInterface
                 ksort($queryTerms);
 
                 if ($this->settings['features']['eDisMax']) {
-                    $queryPart = '_query_:{!edismax}' . $this->query->getHelper()->escapePhrase(vsprintf($queryFormat,
+                    $queryPart = $this->query->getHelper()->escapePhrase(vsprintf($queryFormat,
                             $queryTerms));
                     $queryPart = str_replace('"', '', $queryPart);
                 } else {

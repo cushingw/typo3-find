@@ -195,6 +195,21 @@ plugin.tx_find {
 
 		features {
 			# eDisMax = 1
+            # eDisMax {
+            #         queryFields =
+            #         minimumMatch =
+            #         phraseFields =
+            #         phraseSlop =
+            #         queryPhraseSlop =
+            #         tie =
+            #         boostQuery =
+            #         boostFunctions =
+            #         boostFunctionsMult =
+            #         phraseBigramFields =
+            #         phraseBigramSlop =
+            #         phraseTrigramFields =
+            #         phraseTrigramSlop =
+            # }
 		}
 
 		paging {
