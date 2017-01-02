@@ -249,6 +249,8 @@ plugin.tx_find {
 	}
 }
 
+module.tx_find.settings < plugin.tx_find.settings
+
 tx_find_page = PAGE
 tx_find_page {
 	typeNum = 1369315139
